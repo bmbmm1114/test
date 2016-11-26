@@ -1,0 +1,9 @@
+/*링크 스타일*/
+a:link {text-decoration: none; color: blue;}
+a:visited {text-decoration: none; color: blue;}
+a:active {text-decoration: none; color: blue;}
+a:hover {text-decoration: underline; color: red;}
+
+/* 에러메세지 스타일처리  */
+#error{	font-size: smaller;	color: red; }
+
