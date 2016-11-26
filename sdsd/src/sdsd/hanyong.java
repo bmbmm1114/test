@@ -28,7 +28,7 @@ public class hanyong {
 		hanyong so = new hanyong();
 			so.sanajong();		
 
-		
+		System.out.println("dfdf");
 
 	}
 }
