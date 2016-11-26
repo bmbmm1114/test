@@ -16,6 +16,7 @@ public class hanyong {
 	public static void main(String[] args) {
 		System.out.println("한용짱");
 		System.out.println("빌게이츠내부하");
+		System.out.println("사자는채식주의");
 		
 
 	}
