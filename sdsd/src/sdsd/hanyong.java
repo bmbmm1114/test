@@ -8,6 +8,7 @@ public class hanyong {
 	public void sana(){
 		
 	}
+
 	public void sanasexy(){
 		
 	}
