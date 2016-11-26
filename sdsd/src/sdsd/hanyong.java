@@ -24,7 +24,7 @@ public class hanyong {
 		System.out.println("빌게이츠내부하");
 		System.out.println("사자는채식주의");
 		System.out.println("ㅎㅎ");
-		System.out.println("공룡고기존맛");
+		System.out.println("공65757657567존맛");
 		hanyong so = new hanyong();
 			so.sanajong();		
 
