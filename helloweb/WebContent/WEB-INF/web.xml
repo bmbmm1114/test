@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>helloweb</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file> 
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>HelloServlet</servlet-name>  <!-- 임의로 준 이름 -->  <!--  우리가 만든 클래스 -->
+  	<servlet-class>hello.HelloServlet</servlet-class>  <!-- 니가 가지고 일할 서블렛이다 -->
+  </servlet>
+  
+  <servlet>
+  <servlet-name>GreetingServlet</servlet-name> 
+  <servlet-class>hello.GreetingServlet</servlet-class>
+  </servlet>
+
+
+  
+<!-- (논리적 경로 설정)  -->
+ <!--  <servlet-mapping>
+  <servlet-name>hello servlet</servlet-name>사용자가 /hello(아이콘)라는 url이 요청하면  hello servlet(실행될 프로그램)  사용법을 요청하고 그 요청은 실행환경한테 요청한것이다
+  <url-pattern>/hello</url-pattern>    이런 url로 요청하면 서블렛이 실행된다 
+  
+  url pattern을 접근하는 세가지 방법
+  
+  
+   /hello - / Application의 root 경로 
+  		-http://ip:port 여기까지 tomcat /helloweb(app.이름)   /hello
+  
+ 
+
+  </servlet-mapping> -->
+  
+  
+   <!-- 경로 매핑 : 요청 URL에 경로만 맞으면 Servlet 호출 -->
+<!--   <servlet-mapping>
+  <servlet-name>hello servlet</servlet-name>
+  <url-pattern>/greeting/*</url-pattern>
+  </servlet-mapping>
+   -->
+   
+   
+   <!-- 경로 매핑과 확장자 매핑을 조합해서 쓰는것은 안된다 -->
+   <!-- 확장자 매핑 : 요청 URL에 마지막 확장자만 맞으면 Servlet 호출 -->
+ <servlet-mapping> 
+   <servlet-name>HelloServlet</servlet-name> 
+   <url-pattern>/greeting.*</url-pattern>
+   </servlet-mapping>
+  
+   <!-- greetingServlet 등록 -->
+   <!-- Servlet 태그 : Servlet객체를 등록 - GreetingServlet = new hello.GreetingServlet() -->
+   	 
+   	 
+   <servlet-mapping>
+   <servlet-name>GreetingServlet</servlet-name>
+   <url-pattern>/myhello/*</url-pattern>
+   </servlet-mapping>
+  
+
+</web-app>
+
+
