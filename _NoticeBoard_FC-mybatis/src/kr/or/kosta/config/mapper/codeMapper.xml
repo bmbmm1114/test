@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="codeMapper">
+
+   <!-- code_category로 코드들 조회 - 말머리 조회를 위한 select문 -->
+   <select id="selectCodeByCodeCategory" resultType="code" parameterType="string">
+      SELECT code_id codeId, 
+                  code_name codeName, 
+                  code_desc codeDesc, 
+                  code_category codeCategory 
+      FROM code 
+      WHERE code_category = #{category}
+   </select>
+
+</mapper>

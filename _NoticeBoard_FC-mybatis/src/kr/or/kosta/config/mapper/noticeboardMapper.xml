@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="noticeboardMapper">
+   <!-- select 공통 쿼리 -->
+   <sql id="select-noticeboard-sql">
+      SELECT no, 
+                  prefix, 
+                  title, 
+                  content, 
+                  write_date, 
+                  view_count 
+      FROM  notice_board
+   </sql>
+   <!-- 공지사항 select결과를 처리할 resultMap 설정 -->
+   <resultMap type="notice" id="noticeboard-resultmap">
+      <id column="no" property="no"/>
+      <result column="prefix" property="prefix"/>
+      <result column="title" property="title"/>
+      <result column="content" property="content"/>
+      <result column="write_date" property="writeDate"/>
+      <result column="view_count" property="viewCount"/>
+   </resultMap>
+
+   <!-- select 쿼리 -->
+   <!-- 글번호로 하나의 게시물 조회 -->
+   <select id="selectNoticeBoardByNo" parameterType="_int" resultMap="noticeboard-resultmap">
+      <include refid="select-noticeboard-sql"/>
+      WHERE no = #{no}
+   </select>
+   
+   <!-- 페이지단위 글 목록 조회 -->
+   <select id="selectNoticeBoardList" parameterType="hashmap" resultMap="noticeboard-resultmap">
+      SELECT no, prefix, title, content, write_date, view_count 
+      FROM(
+               SELECT ceil(rownum/#{itemPerPage}) page, no, prefix, title, content, write_date, view_count 
+               FROM(
+                        SELECT no, prefix, title, content, write_date, view_count FROM notice_board ORDER BY no DESC
+               )
+      )
+      WHERE page = #{page}
+   
+   </select>
+   
+   <!-- 총 게시물 수 조회 -->
+   <select id="selectCountNoticeBoard" resultType="_int">
+      SELECT count(no) FROM notice_board
+   </select>
+   
+   
+   <!-- insert - 게시물 등록 :  selectKey를 이용해 글번호에 넣을 sequence값을 조회한다.-->
+   <insert id="insertNoticeBoard" parameterType="notice">
+      <selectKey keyProperty="no" resultType="_int" order="BEFORE">
+         SELECT notice_board_seq.nextval FROM dual
+      </selectKey>
+      INSERT INTO notice_board values(#{no}, #{prefix}, #{title}, #{content}, #{writeDate}, 0)
+   </insert>
+   
+   <!-- 게시물 조회수 1 증가 : 글조회시 호출할 SQL-->
+   <update id="updateViewCount" parameterType="_int">
+      UPDATE notice_board SET view_count = view_count + 1 WHERE no = #{no}
+   </update>
+   
+   <!-- 게시물 정보 수정-no로 나머지 정보 수정 : view_count와 write_date는 수정하지 않는다.-->
+   <update id="updateNoticeBoard" parameterType="notice">
+      UPDATE notice_board SET prefix = #{prefix}, title = #{title}, content = #{content} WHERE no=#{no}
+   </update>
+   
+   <!-- 글번호로 게시물 삭제 -->
+   <delete id="deleteNoticeBoardByNo" parameterType="_int">
+      DELETE FROM notice_board WHERE no = #{no}
+   </delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
