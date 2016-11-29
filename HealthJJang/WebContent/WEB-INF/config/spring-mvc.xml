@@ -20,8 +20,10 @@
 	<!-- <mvc:view-controller path="/register_form.do" view-name="product/register_form.tiles"/>-->	
 	<mvc:view-controller path="/join_form.do" view-name="advertisement/join_form.tiles"/>
 	<mvc:view-controller path="/register_form.do" view-name="shopping/register_form.tiles"/>
-	 
-	 
+	<mvc:view-controller path="/board.do" view-name="Board/publicboard.tiles"/>
+	<mvc:view-controller path="/insert.do" view-name="Board/insert.tiles"/>
+	<mvc:view-controller path="/BoardList.do" view-name="Board/insert.tiles"/>
+	  
 	 
 	 <bean name="tilesConfig" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">

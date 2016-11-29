@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
+
 <style type="text/css">
 header{
 	background-color:skyblue;
@@ -41,12 +44,12 @@ footer{
 		<titles:insertAttribute name="header"/>
 	</header>
 	
-	<nav>
+	<%-- <nav>
 		<titles:insertAttribute name="nav"/>
 	</nav> 
-	
+	 --%>
 	<div>
-		메뉴	
+		메뉴	<jsp:include page="/WEB-INF/view/body/menu.jsp"/>
 	</div>
 	<hr>
 	

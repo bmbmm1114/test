@@ -6,7 +6,7 @@ insert into health_member values(1,);
 create table health_member
 (
 	member_no number(5) primary key,
-	shooes_no number(4) constraint health_fk1 references health_shooes,
+	shooes_no number(4),
 	member_name varchar2(20) not null,
 	member_phonemiddle number(5),
 	member_phoneend number(5),
@@ -22,6 +22,7 @@ create table health_member
 create table health_shooes
 (
 	shooes_no number(4) primary key,
+	member_no number(5) constraint health_fk8 references health_member,
 	shooes_startDay DATE not null,
 	shooes_endDay DATE not null
 )
@@ -48,19 +49,22 @@ create table QA(
 )
 
 create table publicBoard(
-	board_no number(40) not null,
+	board_no number(20) not null,
 	board_header varchar2(50) not null,
-	board_title varchar2(50) not null,
+	board_name varchar2(50) not null,
 	board_content varchar2(50) not null,
 	board_date DATE not null,
-	board_count number(40) not null,
+	board_count number(20) not null,
 	board_password varchar2(50) not null
 )
 
+select board_no , board_header, board_name, board_content, board_date, board_count, board_password from publicBoard
 
 drop table product
+drop table publicBoard
+create sequence board_tb_no_seq
 
-
+drop sequence 
 
 
 
@@ -82,7 +86,8 @@ create table product
 	CODE varchar2(50) not null,
 	product_color varchar2(50) not null,
 	product_amount number(5) not null,
-	product_explain varchar2(50) not null
+	product_explain varchar2(50) not null,
+	product_itemImage varchar2(40)
 )
 
 create table shoppingbasket(

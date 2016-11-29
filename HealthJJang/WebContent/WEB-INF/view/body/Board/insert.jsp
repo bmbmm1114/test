@@ -6,7 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="board.do">게시판</a>
+<jsp:include page="/WEB-INF/view/body/boardmenu.jsp"/>
+
+글 등록 부분입니다.
 
 </body>
 </html>

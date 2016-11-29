@@ -4,14 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import com.mydomain.model.service.HealthService;
 
 @Controller
-@RequestMapping("/member/")
+@RequestMapping("/board/")
 public class HealthController {
 	@Autowired
 	private HealthService service; //주입을 받아야 한다.
@@ -51,6 +53,21 @@ public class HealthController {
 		return list;
 	}*/
 	
+	@RequestMapping("BoardList")
+	public List getList()
+	{
+		
+		/*List list = service.equals("d");*/
+		
+		return null;
+	}
+	
+	@RequestMapping("insert")
+	public ModelAndView insert()
+	{
+		return null;
+		//return new ModelAndView("downloadView","downFile",fileName)
+	}
 	
 }
 

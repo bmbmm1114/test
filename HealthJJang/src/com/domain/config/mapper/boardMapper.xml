@@ -3,8 +3,8 @@
 <mapper namespace="board">
 
 	<sql id="select-sql">
-		select board_no, board_header, board_name, board_content, board_date, board_count
-		from board
+		select board_no, board_header, board_name, board_content, board_date, board_count, board_password
+		from publicBoard
 	</sql>
 
 
@@ -77,7 +77,7 @@
   	 	<selectKey resultType="_int" keyProperty="board_no" order="BEFORE">
 	 		select  board_tb_no_seq.nextVal from dual
 	 	</selectKey>
-		insert into board values (#{board_no}, #{board_header}, #{board_name}, #{board_content}, #{board_date},  #{board_count})
+		insert into publicBoard values (#{board_no}, #{board_header}, #{board_name}, #{board_content}, #{board_date},  #{board_count}, #{board_password})
 	</insert>
    
    <select id="selectBoardById" resultType="CodeTable">		
@@ -85,7 +85,7 @@
    </select> 
    
    <update id="updateBoardById" parameterType="board">
-		update board
+		update publicBoard
 		set  
 			 board_no = #{board_no},
 			 board_header = #{board_header},
@@ -93,16 +93,17 @@
 			 board_content = #{board_content},
 			 board_date= #{board_date},
 			 board_count = #{board_count}
+			 board_password=#{board_password}
 		where board_no = #{board_no}
 	</update>
 	
 	<delete id="deleteBoardById" parameterType="_int">
-		delete from board where board_no = #{value}
+		delete from publicBoard where board_no = #{value}
 	</delete>
 	
 	<select id="selectlistById" parameterType="_int" resultType="board">
-		select board_no, board_header, board_name, board_content, board_date, board_count
-		from board
+		select board_no, board_header, board_name, board_content, board_date, board_count, board_password
+		from publicBoard
 		where board_no = #{value}
 	</select>
 	

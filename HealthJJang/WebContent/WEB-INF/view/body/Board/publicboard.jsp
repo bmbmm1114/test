@@ -6,7 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="board.do">게시판</a>
+<jsp:include page="/WEB-INF/view/body/boardmenu.jsp"/>
+	<h2>공용게시판</h2>
+	
 
 </body>
 </html>
